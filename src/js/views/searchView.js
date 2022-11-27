@@ -15,7 +15,7 @@ export const displayResults = (data) => {
             <img src="https://image.tmdb.org/t/p/w92${movie.poster_path}" onerror="this.src='https://via.placeholder.com/92x138';" class="mr-3" alt="${movie.overview}">
             <div class="media-body">
                 <h5 class="mt-0 mb-1"><span class="badge badge-primary">${movie.vote_average}</span> 
-                    ${movie.title}
+                  <a href="#${movie.id}">${movie.title}</a>
                 </h5>
                 <p>${movie.overview}</p>
         </div>
