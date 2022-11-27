@@ -6,24 +6,28 @@
 
 
 import Search from "./models/search";
+import {elements} from "../js/base"
+import * as searchView from "./views/searchView"
 
 const state = {};
 
 const searchController = async () => {
-    const keyword = document.getElementById("txt-keyword").value;
+    const keyword = elements.searchInput.value;
 
     if(keyword){
         state.search = new Search(keyword);
 
         await state.search.getResults();
+        searchView.clearInput();
+        searchView.clearResults();
 
-        console.log(state.search.data.results);
+        searchView.displayResults(state.search.data);
     }else {
         alert("Anahtar kelime girmelisiniz!")
     }
 }
 
-document.getElementById("form-search").addEventListener("submit", function(e){
+elements.searchForm.addEventListener("submit", function(e){
     e.preventDefault();
     searchController();
     console.log("form submitted");
