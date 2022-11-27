@@ -33,3 +33,7 @@ export const displayMovie = movie => {
 export const scrollToTop = () => {
     window.scrollTo({top:0, behavior: "smooth"});
   }
+
+export const closeDetails = () => {
+    elements.movieDetailsContainer.classList.remove("d-block");
+}

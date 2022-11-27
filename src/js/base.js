@@ -1,10 +1,34 @@
 export const elements= {
     searchForm : document.getElementById("form-search"),
     searchInput : document.getElementById("txt-keyword"),
-    movieList : document.getElementById("movie-list"),
     movieListContainer : document.getElementById("movie-list-container"),
+    movieListHeader : document.getElementById("movie-list-header"),
+    movieList : document.getElementById("movie-list"),
+    movieDetailsContainer : document.getElementById("movie-details-container"),
     movieDetails : document.getElementById("movie-details"),
-    movieDetailsContainer : document.getElementById("movie-details-container")
+    movieDetailsClose : document.getElementById("movie-details-close")
+}
+
+export const renderLoader = parent => {
+  const loader = ` 
+  <div class="mesh-loader">
+    <div class="set-one">
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+  <div class="set-two">
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</div>`;
+  parent.insertAdjacentHTML("beforebegin", loader);
+}
+
+export const clearLoader = parent => {
+  const loader = parent.previousSibling;
+  if(loader){
+    loader.parentNode.removeChild(loader);
+  }
 }
 
 export const imageSize ={

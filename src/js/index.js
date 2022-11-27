@@ -7,7 +7,7 @@
 
 import Search from "./models/Search";
 import { Movie } from "./models/Movie";
-import { elements } from "../js/base";
+import { elements, renderLoader, clearLoader } from "../js/base";
 import * as searchView from "./views/searchView";
 import * as movieView from "./views/movieView";
 
@@ -19,16 +19,19 @@ const searchController = async () => {
 
     if(keyword){
         state.search = new Search(keyword);
-
-        await state.search.getResults();
         searchView.clearInput();
         searchView.clearResults();
-
-        searchView.displayResults(state.search.data);
+        renderLoader(elements.movieListContainer);
+        await state.search.getResults();
+        searchView.displayResults(keyword, state.search.data);
+        setTimeout(() => {
+            clearLoader(elements.movieListContainer);
+        }, 100000);
     }else {
         alert("Anahtar kelime girmelisiniz!")
     }
 }
+            
 
 elements.searchForm.addEventListener("submit", function(e){
     e.preventDefault();
@@ -47,3 +50,4 @@ const movieController = async () => {
 };
 
 window.addEventListener("hashchange", movieController);
+elements.movieDetailsClose.addEventListener("click", movieView.closeDetails);
