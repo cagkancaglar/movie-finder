@@ -5,7 +5,7 @@ export const clearInput = () => {
 }
 
 export const clearResults = () => {
-    elements.searchResults.innerHTML = "";
+    elements.movieList.innerHTML = "";
 }
 
 export const displayResults = (data) => {
@@ -21,6 +21,8 @@ export const displayResults = (data) => {
         </div>
       </li>
         `;
-    elements.searchResults.insertAdjacentHTML("beforeend", html);
+    
+    elements.movieListContainer.classList.add("d-block");
+    elements.movieList.insertAdjacentHTML("beforeend", html);
   });
 };

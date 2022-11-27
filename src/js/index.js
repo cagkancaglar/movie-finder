@@ -6,9 +6,10 @@
 
 
 import Search from "./models/Search";
-import Movie from "./models/Movie";
-import {elements} from "../js/base"
-import * as searchView from "./views/searchView"
+import { Movie } from "./models/Movie";
+import { elements } from "../js/base";
+import * as searchView from "./views/searchView";
+import * as movieView from "./views/movieView";
 
 const state = {};
 
@@ -32,7 +33,6 @@ const searchController = async () => {
 elements.searchForm.addEventListener("submit", function(e){
     e.preventDefault();
     searchController();
-    console.log("form submitted");
 })
 
 // Movie Controller
@@ -41,7 +41,8 @@ const movieController = async () => {
     if(id){
         state.movie = new Movie(id);
         await state.movie.getMovie();
-        console.log(state.movie);
+        movieView.displayMovie(state.movie.data);
+        movieView.scrollToTop();
     }
 };
 

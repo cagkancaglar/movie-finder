@@ -1,6 +1,6 @@
 import {base_url, api_key} from "../config"
 
-export default class Movie {
+export class Movie {
     constructor(id){
         this.id = id;
     }
