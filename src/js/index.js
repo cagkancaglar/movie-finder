@@ -26,7 +26,7 @@ const searchController = async () => {
         searchView.displayResults(keyword, state.search.data);
         setTimeout(() => {
             clearLoader(elements.movieListContainer);
-        }, 100000);
+        }, 1000);
     }else {
         alert("Anahtar kelime girmelisiniz!")
     }
